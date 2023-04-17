@@ -23,7 +23,7 @@ const Filters = () => {
 
   const categories = getUniqueValues(all_products, "category");
   const companies = getUniqueValues(all_products, "company");
-  const colors = getUniqueValues(all_products, "color");
+  const colors = getUniqueValues(all_products, "colors");
   console.log("colors");
 
   return (
@@ -95,9 +95,11 @@ const Filters = () => {
                       onClick={updateFilters}
                       data-color="all"
                       className={`${
-                        color === 'all' ? 'all-btn active' : 'all-btn'
+                        color === "all" ? "all-btn active" : "all-btn"
                       }`}
-                    >All</button>
+                    >
+                      All
+                    </button>
                   );
                 }
                 return (
@@ -119,7 +121,38 @@ const Filters = () => {
             </div>
           </div>
           {/* end Colors */}
+          {/* Price */}
+          <div className="form-control">
+            <h5>price</h5>
+            <p className="price">{formatPrice(price)}</p>
+            <input
+              type="range"
+              name="price"
+              min={min_price}
+              max={max_price}
+              onChange={updateFilters}
+              value={price}
+            ></input>
+          </div>
+          {/* end Price */}
+          {/* Shipping */}
+          <div className="form-control shipping">
+            <label htmlFor="shipping">Free shipping</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              onChange={updateFilters}
+              checked={shipping}
+            />
+          </div>
+          {/* end Shipping */}
         </form>
+        <button
+          type="button"
+          className="clear-btn"
+          onClick={clearFilters}
+        >Clear Filters</button>
       </div>
     </Wrapper>
   );
