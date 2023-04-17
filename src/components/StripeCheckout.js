@@ -87,6 +87,7 @@ const CheckoutForm = () => {
         clearCart();
         navigate('/')
       }, 5000)
+      {/* random comment */}
     }
   };
 
